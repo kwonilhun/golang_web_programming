@@ -11,3 +11,7 @@ func (c Calculator) Add(num1, num2 int) int {
 	panic("implement me")
 	return num1 + num2
 }
+
+func main() {
+
+}

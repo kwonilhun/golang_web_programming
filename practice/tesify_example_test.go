@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+//github.com/google/uuid
+
 func TestTestify(t *testing.T) {
 	t.Run("일치 여부 확인", func(t *testing.T) {
 		num1 := 1

@@ -2,6 +2,7 @@ package practice
 
 import (
 	"context"
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
@@ -92,6 +93,40 @@ func TestGolang(t *testing.T) {
 		// 추가된 key, value를 호출하여 assert로 값을 검증해보세요.
 		// 추가되지 않은 key에 대한 value를 assert로 검증해보세요.
 	})
+
+	t.Run("range", func(t *testing.T) {
+		// TODO 1단계: ch에서 값을 가져와 출력하기
+		// TODO 2단계: 에러 없애기
+		ch := make(chan int, 3)
+		ch <- 1
+		ch <- 2
+		ch <- 3
+		//
+		for value := range ch {
+			fmt.Println(value)
+		}
+	})
+
+	t.Run("for-select", func(t *testing.T) {
+		// TODO 1단계: ch에서 값을 가져와 출력하기
+		// TODO 2단계: 에러 없애기
+		ch := make(chan int, 3)
+		ch <- 1
+		ch <- 2
+		ch <- 3
+		//
+		for {
+			select {
+			case value, ok := <-ch:
+				fmt.Println(value)
+				if !ok {
+					return
+				}
+				fmt.Println(value)
+			}
+		}
+	})
+
 }
 
 func generate() <-chan int {
