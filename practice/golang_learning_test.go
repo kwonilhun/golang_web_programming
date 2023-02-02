@@ -121,5 +121,6 @@ func generate() <-chan int {
 			ch <- i
 		}
 	}()
+
 	return ch
 }
