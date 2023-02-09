@@ -32,3 +32,19 @@ func (s *Service) GetByID(id string) (GetResponse, error) {
 		MembershipType: membership.MembershipType,
 	}, nil
 }
+
+func (s *Service) deleteById(id string) error {
+	err := s.repository.deleteById(id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (s *Service) updateById(request UpdateRequest) (UpdateResponse, error) {
+	membership, err := s.repository.UpdateById(Membership{ID: request.ID, UserName: request.UserName, MembershipType: request.MembershipType})
+	if err != nil {
+		return UpdateResponse{}, err
+	}
+	return UpdateResponse{membership.ID, membership.UserName, membership.MembershipType}, nil
+}
